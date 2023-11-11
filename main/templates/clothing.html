@@ -1,0 +1,56 @@
+{% extends 'navbar.html' %}
+
+{% block content %}
+<div class="catalog">
+  <a href="/clothing" class="lineqwer">EBikes</a>
+</div>
+
+
+{% for clothing in clothing_list %}
+    {% if forloop.counter0|divisibleby:3 %}
+        <div class="catalog-container">
+            <div class="container">
+    {% endif %}
+                <div class="item">
+                    <img class="clothing-image" src="{{ clothing.image.url }}" alt="{{ clothing.name }} image">
+                    <p class="color">{{ clothing.color }}</p>
+                    <p class="price">Цена(за минуту): {{ clothing.price }}тг</p>
+                </div>
+    {% if forloop.counter|divisibleby:3 or forloop.last %}
+            </div>
+        </div>
+    {% endif %}
+{% empty %}
+    <div class="catalog-container">
+        <div style="background-color: #ff6961; color: #fff; font-size: 20px; padding: 10px;text-align: center;">
+            Извините, этого товара нет в каталоге.
+        </div>
+    </div>
+{% endfor %}
+
+<script>
+  const filterForm = document.getElementById('filter-form');   
+	    filterForm.addEventListener('change', function() {
+	        filterForm.submit();
+	    });
+// добавление обработчика событий на кнопку "Фильтры"
+
+
+</script>
+<footer class="u-clearfix u-footer u-grey-80" id="sec-48ca"><div class="u-clearfix u-sheet u-sheet-1">
+  <div class="u-align-left u-social-icons u-spacing-10 u-social-icons-1">
+    <a class="u-social-url" title="instagram" target="_blank" href="https://www.instagram.com/mensroom.kz/"><span class="u-file-icon u-icon u-social-icon u-social-instagram u-text-white u-icon-1"><img src="/static/main/images/1384031.png" alt=""></span>
+    </a>
+  </div>
+  <div class="u-align-left u-social-icons u-spacing-10 u-social-icons-2">
+    <a class="u-social-url" title="instagram" target="_blank" href="https://api.whatsapp.com/send/?phone=77071351660&amp;text=Здравствуйте%21%0A%0AПишу+из+приложения+2ГИС.%0A%0A&amp;type=phone_number&amp;app_absent=0"><span class="u-file-icon u-icon u-social-icon u-social-instagram u-text-white u-icon-2"></span>
+    </a>
+  </div>
+</div></footer>
+<section class="u-backlink u-clearfix u-grey-80">
+  <a>
+    <span></span>
+  </a>
+</section>
+{% endblock %}
+
